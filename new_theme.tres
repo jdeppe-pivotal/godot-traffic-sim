@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://do3bbh78jdmr7"]
+
+[sub_resource type="SystemFont" id="SystemFont_04b5g"]
+font_names = PackedStringArray("Monaco")
+
+[sub_resource type="SystemFont" id="SystemFont_vcryp"]
+font_names = PackedStringArray("Monaco")
+
+[sub_resource type="SystemFont" id="SystemFont_k8gk7"]
+font_names = PackedStringArray("Monaco")
+
+[resource]
+default_font = SubResource("SystemFont_k8gk7")
+Button/font_sizes/font_size = 60
+CheckButton/font_sizes/font_size = 50
+CheckButton/fonts/font = SubResource("SystemFont_04b5g")
+Label/font_sizes/font_size = 32
+Label/fonts/font = SubResource("SystemFont_vcryp")

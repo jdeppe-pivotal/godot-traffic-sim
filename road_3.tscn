@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4g82oe7c1a1a"]
+
+[ext_resource type="Texture2D" uid="uid://b8kqidubsve12" path="res://roads-32x32.png" id="1_hlqa4"]
+[ext_resource type="Script" path="res://TrafficController.gd" id="2_mq666"]
+[ext_resource type="Script" path="res://TrafficLight.gd" id="3_5tvvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oe62"]
+size = Vector2(6, 6)
+
+[sub_resource type="Curve2D" id="Curve2D_f5nil"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -16, 5, 0, 0, 0, 0, -13, 5, 0, 0, 0, 0, -11, 5, 0, 0, 0, 0, -6, 7, 0, 0, 0, 0, -5, 11, 0, 0, 0, 0, -5, 13, 0, 0, 0, 0, -5, 16)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_vbfp0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -16, 5, 0, 0, 0, 0, 16, 5)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rtqs"]
+size = Vector2(6.6875, 6.375)
+
+[sub_resource type="Curve2D" id="Curve2D_8a36y"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, -6, 0, 0, 0, 0, -16, -6)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n11df"]
+size = Vector2(7, 7)
+
+[sub_resource type="Curve2D" id="Curve2D_mixu3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 16, -6, 0, 0, 0, 0, 11, -6, 0, 0, 0, 0, 7, -5, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -4, 5, 0, 0, 0, 0, -5, 10, 0, 0, 0, 0, -5, 16)
+}
+point_count = 7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bxyq"]
+size = Vector2(7, 7)
+
+[sub_resource type="Curve2D" id="Curve2D_pcsdv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 16, 0, 0, 0, 0, 5, 12, 0, 0, 0, 0, 6, 10, 0, 0, 0, 0, 9, 7, 0, 0, 0, 0, 12, 5, 0, 0, 0, 0, 16, 5)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo2cg"]
+size = Vector2(7, 6)
+
+[sub_resource type="Curve2D" id="Curve2D_ogbmn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 16, 0, 0, 0, 0, 5, 11, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -5, -5, 0, 0, 0, 0, -10, -6, 0, 0, 0, 0, -16, -6)
+}
+point_count = 7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4yis"]
+size = Vector2(7, 6)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hlqa4")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="TrafficController" type="Node2D" parent="."]
+script = ExtResource("2_mq666")
+
+[node name="TrafficLight1" type="Sprite2D" parent="TrafficController"]
+self_modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_hlqa4")
+region_enabled = true
+region_rect = Rect2(96, 32, 32, 32)
+script = ExtResource("3_5tvvv")
+
+[node name="Area2D" type="Area2D" parent="TrafficController/TrafficLight1"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight1/Area2D"]
+position = Vector2(-16, 5)
+shape = SubResource("RectangleShape2D_0oe62")
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight1/Area2D"]
+curve = SubResource("Curve2D_f5nil")
+
+[node name="Area2D2" type="Area2D" parent="TrafficController/TrafficLight1"]
+collision_mask = 0
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight1/Area2D2"]
+curve = SubResource("Curve2D_vbfp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight1/Area2D2"]
+position = Vector2(-16, 5)
+shape = SubResource("RectangleShape2D_7rtqs")
+
+[node name="Area2D3" type="Area2D" parent="TrafficController/TrafficLight1"]
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight1/Area2D3"]
+curve = SubResource("Curve2D_8a36y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight1/Area2D3"]
+position = Vector2(16, -6)
+shape = SubResource("RectangleShape2D_n11df")
+
+[node name="Area2D4" type="Area2D" parent="TrafficController/TrafficLight1"]
+collision_mask = 0
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight1/Area2D4"]
+curve = SubResource("Curve2D_mixu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight1/Area2D4"]
+position = Vector2(16, -6)
+shape = SubResource("RectangleShape2D_7bxyq")
+
+[node name="TrafficLight2" type="Sprite2D" parent="TrafficController"]
+self_modulate = Color(0, 1, 0, 1)
+texture = ExtResource("1_hlqa4")
+region_enabled = true
+region_rect = Rect2(64, 96, 32, 32)
+script = ExtResource("3_5tvvv")
+
+[node name="Area2D5" type="Area2D" parent="TrafficController/TrafficLight2"]
+collision_mask = 0
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight2/Area2D5"]
+curve = SubResource("Curve2D_pcsdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight2/Area2D5"]
+position = Vector2(5, 16)
+shape = SubResource("RectangleShape2D_yo2cg")
+
+[node name="Area2D6" type="Area2D" parent="TrafficController/TrafficLight2"]
+collision_mask = 0
+
+[node name="Path2D" type="Path2D" parent="TrafficController/TrafficLight2/Area2D6"]
+curve = SubResource("Curve2D_ogbmn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrafficController/TrafficLight2/Area2D6"]
+position = Vector2(5, 16)
+shape = SubResource("RectangleShape2D_f4yis")
+
+[node name="ManualSwitch" type="Control" parent="TrafficController"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[connection signal="gui_input" from="TrafficController/ManualSwitch" to="TrafficController" method="_on_manual_switch_gui_input"]

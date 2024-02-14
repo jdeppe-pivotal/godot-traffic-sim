@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://4bts6k6e7qqy"]
+
+[ext_resource type="Theme" uid="uid://do3bbh78jdmr7" path="res://new_theme.tres" id="1_0328l"]
+[ext_resource type="Script" path="res://TitleScreen.gd" id="1_iwklo"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iwklo")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 1987.0
+offset_bottom = 1142.0
+theme = ExtResource("1_0328l")
+text = "START"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

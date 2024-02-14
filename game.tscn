@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://1xs87uivelya"]
+
+[ext_resource type="PackedScene" uid="uid://4bts6k6e7qqy" path="res://title_screen.tscn" id="1_1idid"]
+[ext_resource type="Script" path="res://GameManager.gd" id="1_otbn1"]
+[ext_resource type="PackedScene" uid="uid://cmiwaljoskukf" path="res://pause_menu.tscn" id="3_kqjcw"]
+[ext_resource type="PackedScene" uid="uid://chqgkl4k1mppb" path="res://game_over_menu.tscn" id="5_wahya"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_otbn1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartScreen" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("1_1idid")]
+game_manager = NodePath("../..")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer2" node_paths=PackedStringArray("game_manager") instance=ExtResource("3_kqjcw")]
+game_manager = NodePath("../..")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="GameOverMenu" parent="CanvasLayer3" node_paths=PackedStringArray("game_manager") instance=ExtResource("5_wahya")]
+game_manager = NodePath("../..")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmiwaljoskukf"]
+
+[ext_resource type="Theme" uid="uid://do3bbh78jdmr7" path="res://new_theme.tres" id="1_8fcir"]
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_rhg70"]
+[ext_resource type="Script" path="res://AutoLights.gd" id="3_lqi5x"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8fcir")
+script = ExtResource("1_rhg70")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -149.0
+offset_right = 102.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_8fcir")
+theme_override_font_sizes/font_size = 60
+text = "=PAUSE=
+"
+horizontal_alignment = 1
+
+[node name="AutoLights" type="CheckButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Auto Lights"
+script = ExtResource("3_lqi5x")
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="toggled" from="Panel/VBoxContainer/AutoLights" to="Panel/VBoxContainer/AutoLights" method="_on_toggled"]
+[connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
